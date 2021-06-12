@@ -1,0 +1,63 @@
+{
+  "name": "sniplit-plus",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node server/server.js",
+    "build": "cross-env NODE_ENV=production webpack",
+    "dev": "concurrently \"cross-env NODE_ENV=development webpack serve --open --hot\" \"nodemon ./server/server.js\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/star-nose-mole/scratch-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.3.0",
+    "body-parser": "^1.14.2",
+    "browserify": "^17.0.0",
+    "cookie-parser": "^1.4.1",
+    "ejs": "^2.4.1",
+    "express": "^4.12.3",
+    "gulp": "^4.0.2",
+    "mongoose": "^5.11.9",
+    "node-fetch": "^2.3.0",
+    "prop-types": "^15.6.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-hot-loader": "^4.6.3",
+    "react-redux": "^7.2.2",
+    "react-router": "^4.3.1",
+    "redux": "^4.0.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.4",
+    "@babel/preset-react": "^7.13.13",
+    "babel-loader": "^8.2.2",
+    "concurrently": "^6.0.2",
+    "cross-env": "^7.0.3",
+    "css-loader": "^5.2.6",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.3.1",
+    "isomorphic-fetch": "^3.0.0",
+    "nodemon": "^2.0.7",
+    "react-router-dom": "^4.3.1",
+    "redux-devtools-extension": "^2.13.9",
+    "sass": "^1.34.1",
+    "sass-loader": "^12.0.0",
+    "style-loader": "^2.0.0",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-hot-middleware": "^2.25.0"
+  },
+  "bugs": {
+    "url": "https://github.com/star-nose-mole/scratch-project/issues"
+  },
+  "homepage": "https://github.com/star-nose-mole/scratch-project#readme"
+}

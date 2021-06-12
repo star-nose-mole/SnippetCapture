@@ -1,0 +1,19 @@
+-start off with png code snippets
+-look into snipping tool
+-code formatting like discord
+
+
+"express server, react app open, webpack -> then split up" - sara
+
+
+
+data we need to store
+
+
+
+
+database:
+-name
+-email
+-username
+-code snippets
