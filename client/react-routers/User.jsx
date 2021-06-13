@@ -1,6 +1,8 @@
 import React, { Component, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from '../actions/actions.js'
+import AddSnippetContainer from '../containers/AddSnippetContainer.jsx';
+import DisplayContainer from '../containers/DisplayContainer.jsx';
 
 const User = props => {
   const [code, setCode] = useState('');
@@ -29,21 +31,23 @@ const User = props => {
   return(
     <div>
       You made it!
-      <pre>
-      <code>
-        {code}
-      </code>
-      </pre>
-      <textarea onChange={codeHandler} cols='50' rows='10'></textarea>
+      <AddSnippetContainer/>
+      <DisplayContainer/>
     </div>
   )
-
-
+  
+  
 };
 
 
 
 
+{/* <pre>
+<code>
+  {code}
+</code>
+</pre>
+<textarea onChange={codeHandler} cols='50' rows='10'></textarea> */}
 
 
 export default User;
