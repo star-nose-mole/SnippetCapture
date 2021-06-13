@@ -64,6 +64,7 @@ fileController.addTag = async (req, res, next) => {
         err: `error something something: ' ${err}`
         }
       })
+    }
 };
 
 
