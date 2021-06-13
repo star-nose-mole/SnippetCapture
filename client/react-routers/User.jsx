@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import InsideUser from '../containers/InsideUser.jsx';
 
 
 const User = props => {
