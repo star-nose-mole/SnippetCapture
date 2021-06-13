@@ -1,19 +1,19 @@
-
 export const INIT_USER = 'INIT_USER';
-export const ADD_BUYPOWER = 'ADD_BUYPOWER';
-export const BUY_CRYPTO = 'BUY_CRYPTO';
-export const SELL_CRYPTO = 'SELL_CRYPTO';
-export const UPDATE_VIRTUALMONEY = 'UPDATE_VIRTUALMONEY'
-
+export const CREATE_NEW_TAG = 'CREATE_NEW_TAG';
+export const ADD_TAG = 'ADD_TAG';
 
 
 const state = {
+  username: 'xxbobxzxz2',
   tags: {
-    tagID1: tagName
+    redux: 1,
+    tagName: tagID,
   },
   snippets: [
     {
+      snippitID: 1,
       snippetCode: 'for let people count',
+      URL: 'howtobeabetterperson.com',
       tags: [
         tagName,
       ]
