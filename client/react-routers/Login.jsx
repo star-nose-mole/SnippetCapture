@@ -40,7 +40,7 @@ const Login = () => {
       })
     console.log('after fetch')
     console.log(loginSuccess);
-
+    history.push('/user');
     // body.username = ()
     return;
   }

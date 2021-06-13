@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
-import InsideUser from '../containers/InsideUser.jsx';
-
+import React, { Component, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import * as actions from '../actions/actions.js'
 
 const User = props => {
-  const [code, setCode] = React.useState('');
+  const [code, setCode] = useState('');
+  const dispatch = useDispatch();
 
   const codeHandler = (event) => {
     // setCode(event.target.value);
@@ -13,6 +14,18 @@ const User = props => {
     console.log('outFORMAT: ', outFORMAT);
     setCode(outFORMAT);
   }
+  useEffect(() => {
+    fetch('/', {
+      method: 'GET'
+    })
+      .then(response => response.json())
+      .then(data => {
+        const [user, tags, snippets] = data;
+        dispatch(actions.initUserCreator(user, tags, snippets))
+      })
+  })
+
+
   return(
     <div>
       You made it!

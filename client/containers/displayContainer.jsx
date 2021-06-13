@@ -1,0 +1,1 @@
+// contains search component and snippets container
