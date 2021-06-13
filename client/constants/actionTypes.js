@@ -2,9 +2,6 @@
 // after intial fetch, updates store for user
 export const INIT_USER = 'INIT_USER';
 
-//non existent tag gets created
-export const CREATE_NEW_TAG = 'CREATE_NEW_TAG'; 
-
 // add tag to snipet
 export const ADD_TAG = 'ADD_TAG'; 
 
@@ -28,24 +25,7 @@ export const UPDATE_TAGS = 'UPDATE_TAGS'
 
 
 
-const state = {
-  username: 'xxbobxzxz2',
-  search: [],
-  tags: {
-    redux: 1,
-    tagName: tagID,
-  },
-  snippets: [
-    {
-      snippitID: 1,
-      snippetCode: 'for let people count',
-      URL: 'howtobeabetterperson.com',
-      tags: [
-        tagName,
-      ]
-    }
-  ]
-}
+
 
 
 

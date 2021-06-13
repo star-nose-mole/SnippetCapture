@@ -7,12 +7,6 @@ export const initUserCreator = (user, tags, snippets) =>  ({
 })
 
 
-export const createNewTagCreator = (tag) => ({
-  type: types.CREATE_NEW_TAG,
-  payload: {tag: tag}
-})
-
-
 export const addTagCreator = (tag) => ({
   type: types.ADD_TAG,
   payload: {tag: tag},
