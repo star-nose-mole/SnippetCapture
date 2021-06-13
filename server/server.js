@@ -1,28 +1,33 @@
-const path = require("path");
-const express = require("express");
+const path = require('path');
+const express = require('express');
 
 const app = express();
 const PORT = 3000;
 
+//requiring routers
+const apiRouter = require('./routes/api');
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.use('/api', apiRouter);
+
 
 // statically serve everything in the build folder on the route '/build'
 if(process.env.NODE_ENV === 'production') {
-  app.use("/build", express.static(path.join(__dirname, "../build")));
+  app.use('/build', express.static(path.join(__dirname, '../build')));
+  // serve index.html on the route '/'
 };
 
-// serve index.html on the route '/'
-app.get("/", (req, res) => {
+// does the code below belong inside above if-statement?
+app.get('/', (req, res) => {
   return res
     .status(200)
-    .sendFile(path.resolve(__dirname, "../index.html"));
+    .sendFile(path.resolve(__dirname, '../index.html'));
 });
 
 
-
-
-
-
-app.use((req,res) => res.status(404).send("Page not found"));
+app.use('*', (req,res) => res.status(404).send('Page not found'));
 
 app.use((err, req, res, next) => {
   const defaultErr = {
@@ -40,3 +45,6 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () => {
   console.log(`Server listening on port: ${PORT}...`);
 })
+
+
+module.export = app;
