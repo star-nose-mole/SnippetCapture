@@ -28,7 +28,7 @@ router.get(
 
 
 
- router.post(
+router.post(
   '/signup',
   userController.createUser,
   sessionController.startSession,
@@ -38,17 +38,17 @@ router.get(
 
 router.post(
   '/login',
-  // userController.verifyUser,
+  userController.verifyUser,
   sessionController.startSession,
   cookieController.setSSIDCookie,
   (req, res) => res.status(200).send(res.locals.isLoggedIn)
 );
 
-authRouter.get(
-  '/', 
-  sessionController.isLoggedIn, 
-  (req, res) => res.status(200).send(res.locals.isLoggedIn)
-);
+// router.get(
+//   '/', 
+//   sessionController.isLoggedIn, 
+//   (req, res) => res.status(200).send(res.locals.isLoggedIn)
+// );
 
 
 module.exports = router;

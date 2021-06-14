@@ -35,23 +35,21 @@ sessionController.startSession = async (req, res, next) => {
  */
 sessionController.isLoggedIn = async (req, res, next) => {
   try {
-    const cookieId = req.cookies.ssid;
     res.locals.isLoggedIn = false;
-    // logic to determine WHERE condition forexpiration date
-    const dateNow = Date.now();
-    const currSessionQuery = `
-      SELECT session.cookie_id, session.exp
-      FROM session
-      INNER JOIN users
-      WHERE users._id = session.cookie_id
-      WHERE exp < ${dateNow};
-    `;
-    const currSession = await db.query(currSessionQuery); // {params?},session?);
+    if (res.cookie.ssid) {
+      const cookieId = req.cookie.ssid;
 
-    if (currSession.rows.length) {   
-      res.locals.isLoggedIn = true;
+      const dateNow = Date.now();
+      const currSessionQuery = {
+        text: 'SELECT cookie_id FROM sessions WHERE cookie_id = $1 AND exp < $2;',
+        values: [cookieId, dateNow]    
+      } 
+      const currSession = await db.query(currSessionQuery);
+      if (currSession.rows.length) {   
+        res.locals.isLoggedIn = true;
+      }
     }
-    res.send(res.locals.isLoggedIn);
+  
     return next();
   } catch (err) {
     return next({
