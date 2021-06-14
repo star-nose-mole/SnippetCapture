@@ -1,10 +1,14 @@
 const express = require('express');
 const snippetsController= require('../controllers/snippetsController');
+const userController = require("../controllers/userController");
+const cookieController = require("../controllers/cookieController");
+const sessionController = require("../controllers/sessionController");
+
 const router = express.Router();
 
 // for fetch requests to localhost:3000/api/
 router.get(
-  '/',
+  '/search',
   snippetsController.getSnippets,
   (req, res) => {
     res.status(200).json(res.locals.results);
@@ -12,19 +16,8 @@ router.get(
   } 
 );
 
-// router.get(
-//   '/search',
-//   snippetsController.getTagSnippets,
-//   (req, res) => {
-//     res.status(200).json({
-//       snippets: res.locals.snippets,
-//       // tags: res.locals.tags          // do we still need to send back tags?
-//     });
-//   }     
-// );
-
 // router.post(
-//   '/',
+//   '/add',
 //   snippetsController.getSnippets,
 //   snippetsController.addSnippet,
 //   snippetsController.addTags,
@@ -34,9 +27,23 @@ router.get(
 // );
 
 
-/**potential other controllers:
- * - clicking on specific tagID
- * -
- */
+
+ router.post(
+  '/signup',
+  userController.createUser,
+  sessionController.startSession,
+  cookieController.setSSIDCookie,
+  (req, res) => res.status(200).send(res.locals.isLoggedIn)
+);
+
+router.post(
+  '/login',
+  // userController.verifyUser,
+  sessionController.startSession,
+  cookieController.setSSIDCookie,
+  (req, res) => res.status(200).send(res.locals.isLoggedIn)
+);
+
+
 
 module.exports = router;

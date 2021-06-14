@@ -1,16 +1,7 @@
--- const sessionSchema = new Schema({
---   cookieId: { type: String, required: true, unique: true },
---   createdAt: { type: Date, expires: 30, default: Date.now },
--- });
-
--- module.exports = mongoose.model("Session", sessionSchema);
-
-
-
 CREATE TABLE public.sessions (
-	"_id" varchar UNIQUE NOT NULL,
+	"_id" serial NOT NULL,
 	"cookie_id" bigint NOT NULL,
-	"exp" DATE NOT NULL,
+	"exp" bigint NOT NULL,
 	CONSTRAINT "sessions_pk" PRIMARY KEY ("_id")
 ) WITH (
   OIDS=FALSE
@@ -140,17 +131,3 @@ INSERT INTO public.snippet_tags(snippet_id, tag_name) VALUES (6, 'algo');
 
 
 
--- query to select all users and their snippets
--- SELECT u.username, s.url, s.code
--- FROM users u
--- INNER JOIN user_snippets us ON us.user_id = u._id
--- INNER JOIN snippets s ON us.snippet_id = s._id
-
-
---getting snippet and tag data for a specific user 
-SELECT u.username, t.tag_name, s.url, s.code 
-FROM users u
-INNER JOIN user_snippets us ON u._id = 4 AND us.user_id = u._id
-INNER JOIN snippets s ON us.snippet_id = s._id
-INNER JOIN snippet_tags st ON st.snippet_id = s._id
-INNER JOIN tags t ON st.tag_id = t._id
