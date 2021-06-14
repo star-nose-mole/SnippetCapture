@@ -1,0 +1,13 @@
+import React, { Component, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import * as actions from '../actions/actions.js'
+
+const SearchReact = (props) => {
+  return (
+    <div>
+      searching component
+    </div>
+  )
+}
+
+export default SearchReact;
