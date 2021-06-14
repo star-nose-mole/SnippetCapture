@@ -27,9 +27,9 @@ const SearchReact = (props) => {
       //   body: JSON.stringify({tags: searchTags})
       // })
 
-      let data;
-      dispatch(actions.updateSnippetsCreator(data.snippets));
-      dispatch(actions.updateTagsCreator(data.tags));
+      // let data;
+      // dispatch(actions.updateSnippetsCreator(data.snippets));
+      // dispatch(actions.updateTagsCreator(data.tags));
 
       //this is for fetching init
       // fetch('/api/search', {
