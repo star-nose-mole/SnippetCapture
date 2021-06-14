@@ -33,21 +33,34 @@ const Login = (props) => {
     console.log('username', username.value)
     console.log('password', password.value) 
     let loginSuccess = false;
-    await fetch('/login')
+    fetch('/api/login', {
+      method: 'POST',
+      headers: {'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'},
+      body: JSON.stringify({'username': username.value, 'password': password.value}),
+    })
       .then(response => response.json())
       .then(data => {
-        loginSuccess = true;
+        if(data){
+          props.verifiedHandler();
+          history.push('/');
+        }
       })
-      .catch(err =>{
-        loginSuccess = true;
+      .catch((err) => {
+        console.log(err);
       })
-    console.log('after fetch')
-    console.log(loginSuccess);
+
+    // await fetch('/login')
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     loginSuccess = true;
+    //   })
+    //   .catch(err =>{
+    //     loginSuccess = true;
+    //   })
+    // console.log('after fetch')
+    // console.log(loginSuccess);
     //if pass (success)
-    if(true){
-      props.verifiedHandler();
-      history.push('/');
-    }
     // body.username = ()
     return;
   }
@@ -55,7 +68,8 @@ const Login = (props) => {
 
   return (
       <div className="login-wrapper">
-        <h1>SNIPPIT++</h1>
+        <div id='formHeader'><h1>  SNIPPET++</h1></div>  
+        <div>
           <form action="login" method="post" id="loginForm">
             <div>
           <label htmlFor="userName">USERNAME</label>
@@ -70,6 +84,7 @@ const Login = (props) => {
           <button type="submit" onClick={loginHandler}>Login</button>
         </div>
       </form>
+      </div>
       </div>
     // <div>
     //   <h1> Login Test {username}</h1> 

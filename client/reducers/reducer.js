@@ -10,7 +10,7 @@ const initialState = {
     {
       snippet_id: 5,
       code: 'function ()',
-      url: 'https://asdfasfasf.com',
+      url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
       tags: ['react','redux','hook'],
     }
   ]

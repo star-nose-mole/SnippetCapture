@@ -7,8 +7,8 @@ import SnippetsContainer from './SnippetsContainer.jsx';
 
 const DisplayContainer = (props) => {
   return(
-    <div>  
-      <SearchReact/>,
+    <div className='displayContainer'>  
+      <SearchReact/>
       <SnippetsContainer/>
     </div>
   

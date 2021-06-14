@@ -39,6 +39,10 @@ module.exports = {
         target: 'http://localhost:3000/',
         secure: false,
       },
+      '/api': {
+        target: 'http://localhost:3000/',
+        secure: true,
+      }
     },
   },
   plugins: [

@@ -11,11 +11,17 @@ const Snippet = props => {
   }
   // <div1> {props.tags.join(', ')}</div1>
 
+  // let i = Math.floor(Math.random() * 2)
+  // let link = 'https://dev.to/alisabaj/finding-the-middle-of-a-linked-list-36kp';
+  // if(i === 1){
+  //   link = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+  // }
+
   return(
-    <div id='snippet'>
-      <pre>
+    <div className='snippet'>
+      <pre className='snippetCode'>
         <code>
-          {props.code}
+          {props.code.replace(/\\n/g,'\n')}
         </code>
       </pre>
      <a href={props.URL} rel="noreferrer" target="_blank">
