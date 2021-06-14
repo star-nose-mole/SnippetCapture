@@ -37,9 +37,14 @@ const reducer = (state = initialState, action) => {
     
     
     case types.UPDATE_SEARCH:
+      const uniqueTag = {};
+      action.payload.searchString.split(' ').forEach((tag) => {
+        if(tag != '' && tag != ' ') uniqueTag[tag] = 1;
+      })
+
       return {
         ...state,
-        search: action.payload.searchString.split(' '),
+        search: Object.keys(uniqueTag),
       }
    
     case types.UPDATE_SNIPPETS:
