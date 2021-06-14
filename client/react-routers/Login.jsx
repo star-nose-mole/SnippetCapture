@@ -3,7 +3,10 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import regeneratorRuntime from "regenerator-runtime";
 
-const Login = () => {
+const Login = (props) => {
+  //verify user from database
+
+
   let history = useHistory();
   const username = useSelector(state => state.reducer.username);
   // const [username, setUsername] = 
@@ -40,7 +43,11 @@ const Login = () => {
       })
     console.log('after fetch')
     console.log(loginSuccess);
-    history.push('/user');
+    //if pass (success)
+    if(true){
+      props.verifiedHandler();
+      history.push('/');
+    }
     // body.username = ()
     return;
   }

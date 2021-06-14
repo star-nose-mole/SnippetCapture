@@ -4,7 +4,7 @@ import * as actions from '../actions/actions.js'
 
 const Tag = props => {
   return (
-    <div id='tag'>{props.name}</div>
+    <span id='tag'>{props.name}</span>
   )
 }
 

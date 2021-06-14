@@ -1,10 +1,19 @@
 import React, { Component, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory, Redirect } from 'react-router-dom';
 import * as actions from '../actions/actions.js'
 import AddSnippetContainer from '../containers/AddSnippetContainer.jsx';
 import DisplayContainer from '../containers/DisplayContainer.jsx';
 
 const User = props => {
+  let history = useHistory();
+  // useEffect(() => {
+  //   if(true){
+  //     history.push('/login');
+  //     console.log('push');
+  //   }
+  // })
+  <Redirect to="/login"/>
   const [code, setCode] = useState('');
   const dispatch = useDispatch();
 

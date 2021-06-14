@@ -7,17 +7,23 @@ const Snippet = props => {
   const tagsArr = [];
 
   for (let i = 0; i < props.tags.length; i++) {
-    tagsArr.push(<Tag name={props.tags[i]} />)
+    tagsArr.push(<Tag key={`tag${i}`} name={props.tags[i]} />)
   }
   // <div1> {props.tags.join(', ')}</div1>
 
   return(
     <div id='snippet'>
-     <textarea>{props.code}</textarea>
-     <a href={props.URL} rel="noreferrer">
+      <pre>
+        <code>
+          {props.code}
+        </code>
+      </pre>
+     <a href={props.URL} rel="noreferrer" target="_blank">
           Find the code here!
         </a>
-      {tagsArr}
+      <div>
+        {tagsArr}
+      </div>
     </div>
   )
 }
