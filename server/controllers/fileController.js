@@ -1,4 +1,4 @@
-const db = require('../models/snippetsModels');
+const db = require("../models/snippetsModel");
 
 const fileController = {};
 
@@ -9,72 +9,56 @@ fileController.getSnippets = async (req, res, next) => {
     FROM people p
     LEFT OUTER JOIN species s ON p.species_id = s._id
     LEFT OUTER JOIN planets pl ON p.homeworld_id = pl._id;
-  `;                    
-  
-  const snippetsQueryResult = await db.query(snippetsQuery);
-  res.locals.snippets = snippetsQueryResult.rows;
-  return next();
-  } catch(err) {
+  `;
+
+    const snippetsQueryResult = await db.query(snippetsQuery);
+    res.locals.snippets = snippetsQueryResult.rows;
+    return next();
+  } catch (err) {
     return next({
-      log: 'error in fileController:getSnippets',
+      log: "error in fileController:getSnippets",
       message: {
-        err: `error something something: ' ${err}`
-        }
-      })
+        err: `error something something: ' ${err}`,
+      },
+    });
   }
-}   
-
-
-
+};
 
 fileController.getTagSnippets = async (req, res, next) => {
   try {
-
-  } catch(err) {
+  } catch (err) {
     return next({
-      log: 'error in fileController:getSnippets',
+      log: "error in fileController:getSnippets",
       message: {
-        err: `error something something: ' ${err}`
-        }
-      })
+        err: `error something something: ' ${err}`,
+      },
+    });
   }
 };
 
 fileController.addSnippets = async (req, res, next) => {
   try {
-
-  } catch(err) {
+  } catch (err) {
     return next({
-      log: 'error in fileController:getSnippets',
+      log: "error in fileController:getSnippets",
       message: {
-        err: `error something something: ' ${err}`
-        }
-      })
-
+        err: `error something something: ' ${err}`,
+      },
+    });
   }
 };
 
 fileController.addTag = async (req, res, next) => {
   try {
-
-  } catch(err) {
+  } catch (err) {
     return next({
-      log: 'error in fileController:getSnippets',
+      log: "error in fileController:getSnippets",
       message: {
-        err: `error something something: ' ${err}`
-        }
-      })
-    }
+        err: `error something something: ' ${err}`,
+      },
+    });
+  }
 };
-
-
-
-
-
-
-
-
-
 
 // fileController.updateSnippets = async (req, res, next) => {
 //   try {
@@ -91,21 +75,5 @@ fileController.addTag = async (req, res, next) => {
 
 //   }
 // };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 module.exports = starWarsController;

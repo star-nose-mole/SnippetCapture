@@ -1,42 +1,39 @@
-const path = require('path');
-const express = require('express');
-const cookieParser = require('cookie-parser');
+const path = require("path");
+const express = require("express");
+const cookieParser = require("cookie-parser");
 
 const app = express();
 const PORT = 3000;
 
 //requiring routers
-const apiRouter = require('./routes/api');
-const cookieParser = require('cookie-parser');
+const apiRouter = require("./routes/api");
+const cookieParser = require("cookie-parser");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-app.use('/api', apiRouter); //confirm that this is the correct endpoint for the fetch requests
-app.use('/', authRouter);                                           /** QUESTION MARK */
+app.use("/api", apiRouter); //confirm that this is the correct endpoint for the fetch requests
+app.use("/", authRouter); /** QUESTION MARK */
 
 // statically serve everything in the build folder on the route '/build'
-if(process.env.NODE_ENV === 'production') {
-  app.use('/build', express.static(path.join(__dirname, '../build')));
+if (process.env.NODE_ENV === "production") {
+  app.use("/build", express.static(path.join(__dirname, "../build")));
   // serve index.html on the route '/'
-};
+}
 
 // does the code below belong inside above if-statement?
-app.get('/', (req, res) => {
-  return res
-    .status(200)
-    .sendFile(path.resolve(__dirname, '../index.html'));
+app.get("/", (req, res) => {
+  return res.status(200).sendFile(path.resolve(__dirname, "../index.html"));
 });
 
-
-app.use('*', (req,res) => res.status(404).send('Page not found'));
+app.use("*", (req, res) => res.status(404).send("Page not found"));
 
 app.use((err, req, res, next) => {
   const defaultErr = {
-    log: 'Express error handler caught unknown middleware error',
+    log: "Express error handler caught unknown middleware error",
     status: 500,
-    message: { err: 'An error occurred' },
+    message: { err: "An error occurred" },
   };
   console.log(err);
   const errorObj = Object.assign({}, defaultErr, err);
@@ -44,10 +41,8 @@ app.use((err, req, res, next) => {
   return res.status(errorObj.status).json(errorObj.message);
 });
 
-
 app.listen(PORT, () => {
   console.log(`Server listening on port: ${PORT}...`);
-})
-
+});
 
 module.export = app;
