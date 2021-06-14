@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use("/api", apiRouter); //confirm that this is the correct endpoint for the fetch requests
-app.use("/api", authRouter); 
+// app.use("/api", authRouter); 
 // app.use("/login", authRouter); 
 
 
