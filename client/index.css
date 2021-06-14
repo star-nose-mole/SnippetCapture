@@ -1,4 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+
 body {
-  background-color: steelblue;
-  color: black;
+  font-family: 'Quicksand', sans-serif;
+  background-color: #9b9bd5;
+}
+
+.login-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+form{
+  position: relative;
+}
+
+div{
+  padding: .25em;
+}
+
+label {
+  display: block;
+  opacity: 0.7;
+  top: 22px;
+  left: 20px;
+}
+
+form-Buttons{
+  font-family: 'Quicksand', sans-serif;
 }

@@ -44,7 +44,9 @@ router.post(
   (req, res) => res.status(200).send(res.locals.isLoggedIn)
 );
 
+
 // router.get(
+
 //   '/', 
 //   sessionController.isLoggedIn, 
 //   (req, res) => res.status(200).send(res.locals.isLoggedIn)

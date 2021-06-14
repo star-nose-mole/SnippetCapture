@@ -3,16 +3,40 @@ import Login from './react-routers/Login.jsx';
 import User from './react-routers/User.jsx';
 import { BrowserRouter as Router, Route, Switch, Link, Redirect } from "react-router-dom";
 
-function App() {
+const App = () => {
+  const [verified, setVerified] = React.useState(false);
+  const verifiedHandler = () => {
+    setVerified(true);
+  }
+
+  // React.useEffect(() => {
+  //   if(true)
+  // {
+  //   props.verifiedHandler();
+  //   history.push('/');
+  // }
+  // })
+
+  // const fetchVerify = false;
+  // fetch(verifiy  )
+  // await fetch('/api/sdasdasdasd').then(() => console.log('before setting fetchVerify'));
+  // console.log('after')
+  // if(verified !== true){
+
+  //   setVerified(true);
+  // }
+  React.useEffect(() => {
+    // setVerified(true);
+  })
+
   return (
     <Router>
-
+        {verified ? <Redirect to= '/' /> : <Redirect to="/login" />}
       <Switch>
-        <Route exact path="/" component={Login}/>
-        <Route exact path="/user" component={User}/>
+        <Route exact path="/login" component={() => <Login verifiedHandler={verifiedHandler}/>}/>
+        <Route exact path="/" component={User}/>
       </Switch>
 
-      
     </Router>
   )
 }
