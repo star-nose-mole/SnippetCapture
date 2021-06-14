@@ -7,7 +7,7 @@ const sessionController = require("../controllers/sessionController");
 const router = express.Router();
 
 // for fetch requests to localhost:3000/api/
-router.get(
+router.post(
   '/search',
   snippetsController.getSnippets,
   (req, res) => {

@@ -26,22 +26,35 @@ const User = props => {
     setCode(outFORMAT);
   }
   useEffect(() => {
-    fetch('/', {
-      method: 'GET'
+
+    fetch('/api/search', {
+      method: 'POST',
     })
       .then(response => response.json())
       .then(data => {
-        const [user, tags, snippets] = data;
-        dispatch(actions.initUserCreator(user, tags, snippets))
+        console.log(data);
+        // const resultTag = data.snippets.map((snippet) => );
+        const resultSnippets = [];
+        data.snippets.forEach((snippet) => {
+          // console.log(JSON.parse(snippet.code));
+          const tempSnippet = {
+            ...snippet,
+            snippet_id: "for(let i = 0){\n  i++;\n}",
+          }
+          resultSnippets.push(tempSnippet);
+        })
+        console.log('resultSnippet', resultSnippets);
+        dispatch(actions.initUserCreator('Sam', data.tags, resultSnippets))
       })
   })
 
 
   return(
-    <div>
-      You made it!
-      <AddSnippetContainer/>
-      <DisplayContainer/>
+    <div>You made it!
+      <div className='userContainer'>
+        <AddSnippetContainer/>
+        <DisplayContainer/>
+      </div>
     </div>
   )
   

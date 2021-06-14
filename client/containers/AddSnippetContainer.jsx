@@ -34,6 +34,7 @@ const AddSnippetContainer = (props) => {
     let input_snippet = document.getElementById('snippet');
     let input_url_Link = document.getElementById('url_Link');
 
+    console.log(input_snippet.value);
      fetch('/api/addsnippet', {
         method: 'POST',
         headers: {'Accept': 'application/json, text/plain, */*',
@@ -75,7 +76,7 @@ const AddSnippetContainer = (props) => {
         </div>
         <div>
           <label htmlFor="snippet">ADD SNIPPET</label>
-          <input type="textarea" id="snippet" name="snippet" required/>
+          <textarea type="textarea" cols='30' rows='10' id="snippet" name="snippet" required/>
         </div>
         <div>
           <button type="button" value="Submit" onClick={newSnippetHandler}>Add New Snippet</button>

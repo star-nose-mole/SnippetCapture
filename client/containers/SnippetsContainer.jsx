@@ -21,7 +21,7 @@ const SnippetsContainer = props => {
   }
 
   return(
-    <div id='snippetContainer'>
+    <div className='snippetContainer'>
       {snippetsArr}
     </div>
   )

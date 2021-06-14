@@ -2,16 +2,28 @@
 
 body {
   font-family: 'Quicksand', sans-serif;
-  background-color: #9b9bd5;
+  background-color:rgb(252, 136, 116);
 }
 
 .login-wrapper {
-  display: flex;
+  position: absolute;
+  top: 25%;
+  left: 45%;
+  /* display: flex;
   align-items: center;
+  justify-content: center; */
 }
+
+/* #formHeader{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
 
 form{
   position: relative;
+  align-items: center;
+  justify-content: center;
 }
 
 div{
@@ -27,4 +39,59 @@ label {
 
 form-Buttons{
   font-family: 'Quicksand', sans-serif;
+}
+
+.snippet {
+  border: 1px solid black;
+  width: 100%;
+  border-radius: 30px;
+  background-color: rgb(237, 205, 176);
+}
+
+.tag {
+  margin: 10px;
+  padding: 1px 15px;
+  background-color:khaki;
+  border: 1px solid rgb(255, 172, 157);
+  border-radius: 30px;
+
+}
+
+.snippetContainer {
+  width:100%;
+}
+
+
+.userContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.displayContainer{
+  width: 100%;
+  align-items: center;
+  text-align: center;
+}
+
+.searchbar{
+  width: 70%;
+}
+
+.snippetCode{
+  margin-left: 10px;
+  text-align: left;
+  /* border-style: solid; */
+  /* border-color: gray;
+  border-radius: 30px;
+  border-width: 1px; */
+}
+
+
+input{
+  border-radius: 10px;
+}
+
+button{
+  margin-right: 12px;
+  border-radius: 10px;
 }
