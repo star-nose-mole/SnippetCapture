@@ -3,10 +3,17 @@ import * as types from "../constants/actionTypes";
 const initialState = {
   username: 'MATT',
   search: [],
-  tags: {
-    redux: 1,
-  },
-  snippets: []
+  tags: [
+    'tagnames',
+  ],
+  snippets: [
+    {
+      snippet_id: 5,
+      code: 'function ()',
+      url: 'https://asdfasfasf.com',
+      tags: ['react','redux','hook'],
+    }
+  ]
 }
 
 // {

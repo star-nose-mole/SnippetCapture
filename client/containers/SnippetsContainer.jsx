@@ -6,7 +6,7 @@ import Snippet from '../components/Snippet.jsx'
 
 
 const SnippetsContainer = props => {
-  const snippets = useSelector(state => state.snippets);
+  const snippets = useSelector(state => state.reducer.snippets);
   
   const snippetsArr = [];
 
