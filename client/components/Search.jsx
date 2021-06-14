@@ -27,6 +27,10 @@ const SearchReact = (props) => {
       //   body: JSON.stringify({tags: searchTags})
       // })
 
+      let data;
+      dispatch(actions.updateSnippetsCreator(data.snippets));
+      dispatch(actions.updateTagsCreator(data.tags));
+
       //this is for fetching init
       // fetch('/api/search', {
       //   headers: {'Accept': 'application/json, text/plain, */*',
@@ -35,6 +39,7 @@ const SearchReact = (props) => {
       // })
 
       //this is for adding snippet
+      //need awaits
       // fetch('/api/addsnippet', {
       //   method: 'POST',
       //   headers: {'Accept': 'application/json, text/plain, */*',
@@ -46,6 +51,12 @@ const SearchReact = (props) => {
       //       tags: [],
       //     }
       //   )
+      // })
+      //then do
+      // fetch('/api/search', {
+      //   headers: {'Accept': 'application/json, text/plain, */*',
+      //     'Content-Type': 'application/json'},
+      //   body: JSON.stringify({tags: searchTags})
       // })
     }
     // console.log(search);
