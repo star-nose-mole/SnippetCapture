@@ -48,7 +48,7 @@ CREATE TABLE public.snippets (
 CREATE TABLE public.snippet_tags (
 	"_id" serial NOT NULL,
 	"snippet_id" bigint NOT NULL,
-  "tag_id" bigint NOT NULL,
+  "tag_name" varchar NOT NULL,
 	CONSTRAINT "snippet_tags_pk" PRIMARY KEY ("_id")
 ) WITH (
   OIDS=FALSE
@@ -56,28 +56,28 @@ CREATE TABLE public.snippet_tags (
 
 
 CREATE TABLE public.tags (
-	"_id" serial NOT NULL,
 	"tag_name" varchar UNIQUE NOT NULL,
-	CONSTRAINT "tags_pk" PRIMARY KEY ("_id")
+	CONSTRAINT "tags_pk" PRIMARY KEY ("tag_name")
 ) WITH (
   OIDS=FALSE
 );
 
 
 
-ALTER TABLE public.sessions ADD CONSTRAINT "userCookies_fk0" FOREIGN KEY ("cookie_id") REFERENCES  public.users("_id");
+ALTER TABLE public.sessions ADD CONSTRAINT "userCookies_fk0" FOREIGN KEY ("cookie_id") REFERENCES public.users("_id");
 
-ALTER TABLE public.user_snippets ADD CONSTRAINT "user_snippets_fk0" FOREIGN KEY ("user_id") REFERENCES  public.users("_id");
-ALTER TABLE public.user_snippets ADD CONSTRAINT "user_snippets_fk1" FOREIGN KEY  ("snippet_id") REFERENCES  public.snippets("_id");
+ALTER TABLE public.user_snippets ADD CONSTRAINT "user_snippets_fk0" FOREIGN KEY ("user_id") REFERENCES public.users("_id");
+ALTER TABLE public.user_snippets ADD CONSTRAINT "user_snippets_fk1" FOREIGN KEY  ("snippet_id") REFERENCES public.snippets("_id");
 
-ALTER TABLE public.snippet_tags ADD CONSTRAINT "snippet_tags_fk0" FOREIGN KEY ("snippet_id") REFERENCES  public.snippets("_id");
-ALTER TABLE public.snippet_tags ADD CONSTRAINT "snippet_tags_fk1" FOREIGN KEY  ("tag_id") REFERENCES  public.tags("_id");
+ALTER TABLE public.snippet_tags ADD CONSTRAINT "snippet_tags_fk0" FOREIGN KEY ("snippet_id") REFERENCES public.snippets("_id");
+ALTER TABLE public.snippet_tags ADD CONSTRAINT "snippet_tags_fk1" FOREIGN KEY  ("tag_name") REFERENCES public.tags("tag_name");
 
-INSERT INTO public.users(username, password) VALUES ('keyboardFanatic', 'keyboard');
-INSERT INTO public.users(username, password) VALUES ('frandering', 'siracha123');
-INSERT INTO public.users(username, password) VALUES ('master', 'master');
-INSERT INTO public.users(username, password) VALUES ('bbygorl', 'ian');
-INSERT INTO public.users(username, password) VALUES ('mochi', 'treaties');
+INSERT INTO public.users VALUES (1, 'keyboardFanatic', 'keyboard');
+INSERT INTO public.users VALUES (2, 'frandering', 'siracha123');
+INSERT INTO public.users VALUES (3, 'master', 'master');
+INSERT INTO public.users VALUES (4, 'bbygorl', 'ian');
+INSERT INTO public.users VALUES (5, 'mochi', 'treaties');
+
 
 INSERT INTO public.snippets VALUES (1, 'https://gist.githubusercontent.com/zzarcon/dae3db4b470cb5140fb5/raw/c0e95a510d2524bc0cee290728bb59cc6c7a5cc3/fibo_loop.js', 'function fibonacci(num){\n  var a = 1, b = 0, temp;\n\n  while (num >= 0){\n    temp = a;\n    a = a + b;\n    b = temp;\n    num--;\n  }\n\n  return b;\n}');
 INSERT INTO public.snippets VALUES (2, 'www.shahsapproachlecture.com', 'const fizzbuzzbazz = num => {\n  const output = [];\n  for (let i = 1; i <= num; i++) {\n    let str = '';\n    if (i % 3 === 0) str += ''fizz'';\n    if (i % 5 === 0) str += ''buzz'';\n    if (i % 7 === 0) str += ''bazz'';\n    output.push(str || i);\n  }\n  return output;\n}');
@@ -86,18 +86,17 @@ INSERT INTO public.snippets VALUES (4, 'https://developer.mozilla.org/en-US/docs
 INSERT INTO public.snippets VALUES (5, 'https://dev.to/alisabaj/finding-the-middle-of-a-linked-list-36kp', 'function middleNode(head) {\n  let fast = head;\n  let slow = head;\n\n  while (fast && fast.next) {\n    slow = slow.next;\n    fast = fast.next.next;\n  }\n  return slow;\n}');
 
 
-INSERT INTO public.tags VALUES (1, 'algo');
-INSERT INTO public.tags VALUES (2, 'reverse');
-INSERT INTO public.tags VALUES (3, 'algorithm');
-INSERT INTO public.tags VALUES (4, 'java');
-INSERT INTO public.tags VALUES (5, 'fizz');
-INSERT INTO public.tags VALUES (6, 'buzz');
-INSERT INTO public.tags VALUES (7, 'bazz');
-INSERT INTO public.tags VALUES (8, 'fibonacci');
-INSERT INTO public.tags VALUES (9, 'genetic');
-INSERT INTO public.tags VALUES (10, 'linked_list');
-INSERT INTO public.tags VALUES (11, 'node');
-
+INSERT INTO public.tags VALUES ('algo');
+INSERT INTO public.tags VALUES ('reverse');
+INSERT INTO public.tags VALUES ('algorithm');
+INSERT INTO public.tags VALUES ('java');
+INSERT INTO public.tags VALUES ('fizz');
+INSERT INTO public.tags VALUES ('buzz');
+INSERT INTO public.tags VALUES ('bazz');
+INSERT INTO public.tags VALUES ('fibonacci');
+INSERT INTO public.tags VALUES ('genetic');
+INSERT INTO public.tags VALUES ('linked_list');
+INSERT INTO public.tags VALUES ('node');
 
 
 
@@ -108,22 +107,22 @@ INSERT INTO public.user_snippets VALUES (4, 4, 2);
 INSERT INTO public.user_snippets VALUES (5, 5, 5);
 
 
-INSERT INTO public.snippet_tags VALUES (1, 1, 1);
-INSERT INTO public.snippet_tags VALUES (2, 1, 8);
-INSERT INTO public.snippet_tags VALUES (3, 2, 5);
-INSERT INTO public.snippet_tags VALUES (4, 2, 6);
-INSERT INTO public.snippet_tags VALUES (5, 2, 7);
-INSERT INTO public.snippet_tags VALUES (6, 3, 3);
-INSERT INTO public.snippet_tags VALUES (7, 3, 4);
-INSERT INTO public.snippet_tags VALUES (8, 3, 9);
-INSERT INTO public.snippet_tags VALUES (9, 4, 2);
-INSERT INTO public.snippet_tags VALUES (10, 5, 10);
+INSERT INTO public.snippet_tags VALUES (1, 1, 'algo');
+INSERT INTO public.snippet_tags VALUES (2, 1, 'reverse');
+INSERT INTO public.snippet_tags VALUES (3, 2, 'fizz');
+INSERT INTO public.snippet_tags VALUES (4, 2, 'buzz');
+INSERT INTO public.snippet_tags VALUES (5, 2, 'bazz');
+INSERT INTO public.snippet_tags VALUES (6, 3, 'algorithm');
+INSERT INTO public.snippet_tags VALUES (7, 3, 'java');
+INSERT INTO public.snippet_tags VALUES (8, 3, 'genetic');
+INSERT INTO public.snippet_tags VALUES (9, 4, 'reverse');
+INSERT INTO public.snippet_tags VALUES (10, 5, 'linked_list');
+INSERT INTO public.snippet_tags VALUES (11, 5, 'node');
 
 
 
 select setval('public.users__id_seq', 6, true);
 select setval('public.snippets__id_seq', 5, true);
-select setval('public.tags__id_seq', 11, true);
 select setval('public.user_snippets__id_seq', 5, true);
 select setval('public.snippet_tags__id_seq', 11, true);
 
@@ -132,12 +131,15 @@ INSERT INTO public.snippets(url, code) VALUES ('https://www.google.com', 'const 
 
 INSERT INTO public.user_snippets(user_id, snippet_id) VALUES (4, 6);
 
-INSERT INTO public.tags(tag_name) VALUES ('flatten');
-INSERT INTO public.tags(tag_name) VALUES ('reduce');
+INSERT INTO public.tags VALUES ('flatten');
+INSERT INTO public.tags VALUES ('reduce');
 
-INSERT INTO public.snippet_tags(snippet_id, tag_id) VALUES (6, 12);
-INSERT INTO public.snippet_tags(snippet_id, tag_id) VALUES (6, 13);
-INSERT INTO public.snippet_tags(snippet_id, tag_id) VALUES (6, 1);
+INSERT INTO public.snippet_tags(snippet_id, tag_name) VALUES (6, 'flatten');
+INSERT INTO public.snippet_tags(snippet_id, tag_name) VALUES (6, 'reduce');
+INSERT INTO public.snippet_tags(snippet_id, tag_name) VALUES (6, 'algo');
+
+
+
 -- query to select all users and their snippets
 -- SELECT u.username, s.url, s.code
 -- FROM users u

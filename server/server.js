@@ -7,14 +7,15 @@ const PORT = 3000;
 
 //requiring routers
 const apiRouter = require("./routes/api");
-const cookieParser = require("cookie-parser");
+const authRouter = require("./routes/auth");
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use("/api", apiRouter); //confirm that this is the correct endpoint for the fetch requests
-app.use("/", authRouter); /** QUESTION MARK */
+// app.use("/login", authRouter); /** QUESTION MARK */
 
 // statically serve everything in the build folder on the route '/build'
 if (process.env.NODE_ENV === "production") {

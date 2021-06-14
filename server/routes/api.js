@@ -1,39 +1,37 @@
 const express = require('express');
-const fileController = require('../controllers/fileController');
+const snippetsController= require('../controllers/snippetsController');
 const router = express.Router();
 
 // for fetch requests to localhost:3000/api/
 router.get(
   '/',
-  fileController.getSnippets,
+  snippetsController.getSnippets,
   (req, res) => {
-    res.status(200).json({
-      snippets: res.locals.snippets,
-      tags: res.locals.tags            // can be an object of { tagName: true } just like starwars favs
-    });
-  }
+    res.status(200).json(res.locals.results);
+     // can be an object of { tagName: true } just like starwars favs
+  } 
 );
 
-router.get(
-  '/search',
-  fileController.getTagSnippets,
-  (req, res) => {
-    res.status(200).json({
-      snippets: res.locals.snippets,
-      // tags: res.locals.tags          // do we still need to send back tags?
-    });
-  }     
-);
+// router.get(
+//   '/search',
+//   snippetsController.getTagSnippets,
+//   (req, res) => {
+//     res.status(200).json({
+//       snippets: res.locals.snippets,
+//       // tags: res.locals.tags          // do we still need to send back tags?
+//     });
+//   }     
+// );
 
-router.post(
-  '/',
-  fileController.getSnippets,
-  fileController.addSnippet,
-  fileController.addTags,
-  (req, res) => {
-    res.status(200).json('Your snippet was saved!');
-  }
-);
+// router.post(
+//   '/',
+//   snippetsController.getSnippets,
+//   snippetsController.addSnippet,
+//   snippetsController.addTags,
+//   (req, res) => {
+//     res.status(200).json('Your snippet was saved!');
+//   }
+// );
 
 
 /**potential other controllers:
