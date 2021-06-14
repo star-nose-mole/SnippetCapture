@@ -3,7 +3,7 @@ const db = require("../models/snippetsModel");
 const snippetsController = {};
 
 snippetsController.getSnippets = async (req, res, next) => {
-  if (req.body.tags.length = 0) {
+  // if (req.body.tags.length = 0) {
     try {
       const snippetsQuery = {
         text: "SELECT s._id as snippet_id, s.code, s.url,  array_agg(t.tag_name::text) as tags FROM users u INNER JOIN user_snippets us ON u._id = $1 AND us.user_id = u._id INNER JOIN snippets s ON us.snippet_id = s._id INNER JOIN snippet_tags st ON st.snippet_id = s._id INNER JOIN tags t ON st.tag_name = t.tag_name GROUP BY s._id, s.code, s.url;",
@@ -30,9 +30,10 @@ snippetsController.getSnippets = async (req, res, next) => {
         },
       });
     }
-  } else {
-    console.log("you looking for me?")
-  }
+  // } 
+  // else {
+  //   console.log("you looking for me?")
+  // }
 };
 
 snippetsController.getTagSnippets = async (req, res, next) => {
